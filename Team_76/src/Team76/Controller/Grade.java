@@ -1,50 +1,52 @@
 package Team76.Controller;
 
 public class Grade {
-	
-	private String studentID;
-	private String QuizId;
-	private String quiztitle;
+
+	private int studentId;
+	private int quizId;
+	private String quizTitle;
 	private String studentName;
 	private String grade;
 	
-	public Grade(String studentID, String quizId, String quiztitle, String studentName, String grade) {
-		this.studentID = studentID;
-		QuizId = quizId;
-		this.quiztitle = quiztitle;
+	public Grade(int studentId, int quizId, String quizTitle, String studentName, String grade) {
+		
+		this.studentId = studentId;
+		this.quizId = quizId;
+		this.quizTitle = quizTitle;
 		this.studentName = studentName;
 		this.grade = grade;
 	}
 
-	public Grade(String quizId, String quiztitle, String studentName, String grade) {
-		QuizId = quizId;
-		this.quiztitle = quiztitle;
+	public Grade(int quizId, String quizTitle, String studentName, String grade) {
+		
+		this.quizId = quizId;
+		this.quizTitle = quizTitle;
 		this.studentName = studentName;
 		this.grade = grade;
 	}
 
-	public String getStudentID() {
-		return studentID;
+	public int getStudentId() {
+		return studentId;
 	}
 
-	public void setStudentID(String studentID) {
-		this.studentID = studentID;
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 
-	public String getQuizId() {
-		return QuizId;
+	public int getQuizId() {
+		return quizId;
 	}
 
-	public void setQuizId(String quizId) {
-		QuizId = quizId;
+	public void setQuizId(int quizId) {
+		this.quizId = quizId;
 	}
 
-	public String getQuiztitle() {
-		return quiztitle;
+	public String getQuizTitle() {
+		return quizTitle;
 	}
 
-	public void setQuiztitle(String quiztitle) {
-		this.quiztitle = quiztitle;
+	public void setQuizTitle(String quizTitle) {
+		this.quizTitle = quizTitle;
 	}
 
 	public String getStudentName() {
@@ -65,8 +67,8 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return "Grade [studentID=" + studentID + ", QuizId=" + QuizId
-				+ ", quiztitle=" + quiztitle + ", studentName="
+		return "Grade [studentId=" + studentId + ", quizId=" + quizId 
+				+ ", quizTitle=" + quizTitle + ", studentName="
 				+ studentName + ", grade=" + grade + "]";
-	}
+	}	
 }
