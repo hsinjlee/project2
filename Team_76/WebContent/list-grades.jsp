@@ -1,6 +1,11 @@
-<%@ page import = "java.util.*, Team76.Controller.*"  %>
+<%@ page import="java.util.*, Team76.Controller.*"%>
 <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 
+/** 
+*  list-grades.jsp class is view in MVC. 
+*  Author: Hsin-Jung Lee 
+*  Version: 3 
+*/
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +14,8 @@
 <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"> -->
 </head>
 
-<% 	List<Grade> theGrades = 
-					(List <Grade>) request.getAttribute("GRADE_LIST");
+<%
+	List<Grade> theGrades = (List<Grade>) request.getAttribute("GRADE_LIST");
 %>
 
 <body>
@@ -32,25 +37,29 @@
 					<th>Quiz Title</th>
 					<th>Student Name</th>
 					<th>Grade</th>
-
 				</tr>
 
+				
 				//<c:forEach var="tempGrade" items="${GRADE_LIST }">
-				<% for (Grade tempGrade : theGrades) { %>
+					<%
+						for (Grade tempGrade : theGrades) {
+					%>
 					<tr>
 						<%-- <td>${tempGrade.studentId }</td>
 						<td>${tempGrade.quizId }</td>
 						<td>${tempGrade.quizTitle}</td>
 						<td>${tempGrade.studentName }</td>
 						<td>${tempGrade.grade }</td> --%>
-						
-						<td><%= tempGrade.getStudentId() %></td>
-						<td><%= tempGrade.getQuizId() %></td>
-						<td><%= tempGrade.getQuizTitle() %></td>
-						<td><%= tempGrade.getStudentName() %></td>
-						<td><%= tempGrade.getGrade() %></td>
+
+						<td><%=tempGrade.getStudentId()%></td>
+						<td><%=tempGrade.getQuizId()%></td>
+						<td><%=tempGrade.getQuizTitle()%></td>
+						<td><%=tempGrade.getStudentName()%></td>
+						<td><%=tempGrade.getGrade()%></td>
 					</tr>
-				<% } %>
+					<%
+						}
+					%>
 				//</c:forEach>
 
 

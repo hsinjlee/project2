@@ -7,9 +7,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.sql.DataSource;
 
+/**
+ * This class GradeDbUtil contains Model in MVC. 
+ * Author: Hsin-Jung Lee 
+ * Version: 3
+ */
 public class GradeDbUtil {
 
 	private DataSource dataSource;
@@ -21,81 +25,54 @@ public class GradeDbUtil {
 	public List<Grade> getGrades() throws Exception {
 
 		List<Grade> grades = new ArrayList<>();
-		
-		Connection myConn = null;
-		Statement myStmt = null;
-		ResultSet myRs = null;
 
-		Class.forName("com.mysql.jdbc.Driver");
-
-        // connect way #1
-        String url1 = "jdbc:mysql://localhost:3306/ser516p2";
-        String user = "root";
-        String password = "1hsinjung!";
-
-        myConn = DriverManager.getConnection(url1, user, password);
-        if (myConn != null) {
-            System.out.println("Connected to the database test1");
-        }
-		
-		
-//		String userID = request.getParameter("userID");
-//		String driver = "com.mysql.jdbc.driver";
-//		String url = "jdbc:mysql://localhost:3306/";
-//		String database = "ser516p2";
-//		String user = "root";
-//		String password = "1hsinjung!";
-//		try {
-//			Class.forName(driver);
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-		
-		
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
 
 		try {
 
-			myConn = dataSource.getConnection();
+			connection = dataSource.getConnection();
 
 			String sql = "SELECT * FROM grade";
 
-			myStmt = myConn.createStatement();
+			statement = connection.createStatement();
 
-			myRs = myStmt.executeQuery(sql);
+			resultSet = statement.executeQuery(sql);
 
-			while (myRs.next()) {
+			while (resultSet.next()) {
 
-				int studentId = myRs.getInt("studentID");
-				int quizId = myRs.getInt("QuizId");
-				String quizTitle = myRs.getString("quiztitle");
-				String studentName = myRs.getString("studentName");
-				String grade = myRs.getString("grade");
+				int studentId = resultSet.getInt("studentID");
+				int quizId = resultSet.getInt("QuizId");
+				String quizTitle = resultSet.getString("quiztitle");
+				String studentName = resultSet.getString("studentName");
+				String grade = resultSet.getString("grade");
 
 				Grade tempGrade = new Grade(studentId, quizId, quizTitle, 
 						studentName, grade);
 
 				grades.add(tempGrade);
 			}
-
 			return grades;
 		} finally {
 
-			close(myConn, myStmt, myRs);
+			close(connection, statement, resultSet);
 		}
 	}
 
-	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+	private void close(Connection connection, Statement statement, 
+			ResultSet resultSet) {
 		try {
-			if (myRs != null) {
-				myRs.close();
+			if (resultSet != null) {
+				resultSet.close();
 			}
 
-			if (myStmt != null) {
-				myStmt.close();
+			if (statement != null) {
+				statement.close();
 			}
 
-			if (myConn != null) {
-				myConn.close();
+			if (connection != null) {
+				connection.close();
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();

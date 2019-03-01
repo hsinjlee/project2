@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /**
- * Servlet implementation class GradeControllerServlet
+ * Servlet implementation class GradeControllerServlet for Controller in MVC.
+ * Author: Hsin-Jung Lee
+ * Version: 3
  */
 @WebServlet("/GradeControllerServlet")
 public class GradeControllerServlet extends HttpServlet {
@@ -35,19 +37,15 @@ public class GradeControllerServlet extends HttpServlet {
 			throw new ServletException(exception);
 		}
 	}
-
 	
 	protected void doGet
 	(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		try{
 			
-//			listGrades(request, response);
 			List <Grade> grades = gradeDbUtil.getGrades();
 			
-			
 			request.setAttribute("GRADE_LIST", grades);
-			
 			
 			RequestDispatcher dispatcher 
 			= request.getRequestDispatcher("/list-grades.jsp");
@@ -56,24 +54,6 @@ public class GradeControllerServlet extends HttpServlet {
 		}
 		catch (Exception exception) {
 			throw new ServletException(exception);
-		}
-		
+		}		
 	}
-
-//	private void listGrades
-//	(HttpServletRequest request, HttpServletResponse response) 
-//			throws Exception {
-//		
-//		List <Grade> grades = gradeDbUtil.getGrades();
-//		
-//		
-//		request.setAttribute("GRADE_LIST", grades);
-//		
-//		
-//		RequestDispatcher dispatcher 
-//		= request.getRequestDispatcher("/list-grades.jsp");
-//		dispatcher.forward(request, response);
-//		
-//	}
-
 }

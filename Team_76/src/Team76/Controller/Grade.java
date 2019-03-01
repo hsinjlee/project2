@@ -1,5 +1,10 @@
 package Team76.Controller;
 
+/**
+ * This class Grade contains Grade Object. 
+ * Author: Hsin-Jung Lee 
+ * Version: 3
+ */
 public class Grade {
 
 	private int studentId;
@@ -7,9 +12,10 @@ public class Grade {
 	private String quizTitle;
 	private String studentName;
 	private String grade;
-	
-	public Grade(int studentId, int quizId, String quizTitle, String studentName, String grade) {
-		
+
+	public Grade(int studentId, int quizId, String quizTitle, 
+			String studentName, String grade) {
+
 		this.studentId = studentId;
 		this.quizId = quizId;
 		this.quizTitle = quizTitle;
@@ -17,8 +23,9 @@ public class Grade {
 		this.grade = grade;
 	}
 
-	public Grade(int quizId, String quizTitle, String studentName, String grade) {
-		
+	public Grade(int quizId, String quizTitle, String studentName, 
+			String grade) {
+
 		this.quizId = quizId;
 		this.quizTitle = quizTitle;
 		this.studentName = studentName;
@@ -70,5 +77,5 @@ public class Grade {
 		return "Grade [studentId=" + studentId + ", quizId=" + quizId 
 				+ ", quizTitle=" + quizTitle + ", studentName="
 				+ studentName + ", grade=" + grade + "]";
-	}	
+	}
 }
